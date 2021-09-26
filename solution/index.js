@@ -69,60 +69,7 @@ function createPageStructure(){
     let body = document.createElement('div');
     body.id = 'pageBody';
 
-    //navigate between crousels
-    let nextSection = document.createElement('button');
-    nextSection.textContent = 'NEXT';
-    nextSection.classList.add('right-left');
-    nextSection.classList.add('swipe-button');
-    nextSection.classList.add('start-0');
-    nextSection.classList.add('position-absolute');
-    nextSection.classList.add('p-1');
-    nextSection.classList.add('m-1');
-    nextSection.addEventListener('click', (event) => {
-
-    currentItemIndex = undefined;
-    crousels = document.querySelectorAll('.carousel-item');
-    
-    found = false;
-    for (let i = 0; i < crousels.length; i++) {
-        const item = crousels[i];
-        item.classList.forEach(cls => {
-            if(cls == 'active')
-                index = i;
-        });
-        if(index < crousels.length -1){
-            if(i == index){
-                item.classList.remove('active');
-                input = document.getElementById(item.id).querySelector('input');
-                input.style.display = '';
-        
-                button = document.getElementById(item.id).querySelector('button');
-                button.style.display = '';
-            }
-            if(i == index+1) {
-                item.classList.add('active');
-                input = document.getElementById(item.id).querySelector('input');
-                input.style.display = '';
-        
-                button = document.getElementById(item.id).querySelector('button');
-                button.style.display = '';
-            }
-        }
-        else{
-            crousels[0].classList.add('active');
-            crousels[index].classList.remove('active');
-            
-            input = document.getElementById(item.id).querySelector('input');
-            input.style.display = '';
-    
-            button = document.getElementById(item.id).querySelector('button');
-            button.style.display = '';
-        }
-    }
-        
-    })
-    body.append(nextSection);
-
+   
     document.getElementById('root').appendChild(body);
     
     //moving tasks between sections using keyboards keys
@@ -202,12 +149,6 @@ function search(event){
     let allLi = [];
     for (let i = 0; i < allSections.length; i++) {
         const section = allSections[i];
-        section.classList.add('active');
-        input = document.getElementById(section.id).querySelector('input');
-        input.style.display = 'none';
-        
-        button = document.getElementById(section.id).querySelector('button');
-        button.style.display = 'none';
         allLi.push(document.getElementById(section.id).querySelectorAll('ul')[0].querySelectorAll('li'));
     }
     allLi.forEach(section => {
@@ -238,13 +179,6 @@ function HandleAddTaskButtonClickedEvent(event){
         let allSections = document.querySelectorAll('section');
         for (let i = 0; i < allSections.length; i++) {
             const section = allSections[i];
-            section.classList.add('active');
-                
-            inputR = document.getElementById(section.id).querySelector('input');
-            inputR.style.display = 'none';
-            
-            button = document.getElementById(section.id).querySelector('button');
-            button.style.display = 'none';
         }
         bootstrapsClassSelctor();
     }
@@ -383,12 +317,10 @@ function bootstrapsClassSelctor(){
     sections.forEach(section => {
         section.classList.add('card');
         section.classList.add('m-5');
-        section.classList.add('p-4.5');
+        section.classList.add('p-5');
 
         section.classList.add('bg-success');
         section.classList.add('bg-gradient');
-        section.classList.add('carousel-item');
-        if(index == 0) section.classList.add('active');
         buttons = document.getElementById(section.id).querySelectorAll('button');
         buttons.forEach(button => {
             button.classList.add('btn');
@@ -426,13 +358,6 @@ function dragStart(e) {
     e.dataTransfer.setData('text/html', this.innerHTML);
     sections = document.querySelectorAll('section');
     sections.forEach(section => {
-        section.classList.add('active');
-        
-        input = document.getElementById(section.id).querySelector('input');
-        input.style.display = 'none';
-
-        button = document.getElementById(section.id).querySelector('button');
-        button.style.display = 'none';
     });
     
   };
@@ -461,8 +386,6 @@ function dragStart(e) {
         sections = document.querySelectorAll('section');
         let tasks = {};
         sections.forEach(section => {
-            section.classList.remove('active');
-            document.getElementById('todo').classList.add('active');
             tasks[section.id] = [];
             allLi = section.querySelectorAll('ul')[0].querySelectorAll('li');
             allLi.forEach(li => {
@@ -549,6 +472,5 @@ if (localStorage.getItem("tasks") === null){
     }));
 }
 
-fetchApiData();
 createPageStructure();
 bootstrapsClassSelctor();
