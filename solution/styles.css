@@ -1,0 +1,134 @@
+
+body{
+    background-color: thistle;
+}
+
+#loading {
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+}
+#loading.display {
+    visibility: visible;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.left-right{
+  background: linear-gradient(90deg, #333 50%, #C4E538 50%);
+}
+  .left-right:after{
+      background: linear-gradient(90deg,  #C4E538 50%, transparent 50%);
+  }
+
+
+.left-right,
+.left-right:after {
+  background-position: 100%;
+}
+
+.left-right:hover,
+.left-right:hover:after {
+  background-position: 0;
+}
+
+
+
+.right-left{
+  background: linear-gradient(90deg,  #C4E538 50%, #333 50%);
+}
+  right-left:after{
+      background: linear-gradient(90deg, transparent 50%,  #C4E538 50%);
+  }
+
+
+.right-left,
+.right-left:after {
+  background-position: 0;
+}
+
+.right-left:hover,
+.right-left:hover:after {
+  background-position: 100%;
+}
+
+
+
+.top-bottom{
+  background: linear-gradient(0deg,  #C4E538 50%, #333 50%);
+}
+  top-bottom:after{
+      background: linear-gradient(0deg, transparent 50%,  #C4E538 50%);
+  }
+
+
+.top-bottom,
+.top-bottom:after {
+  background-position-y: 100%;
+}
+
+.top-bottom:hover,
+.top-bottom:hover:after {
+  background-position-y: 0;
+}
+
+
+
+.bottom-top{
+  background: linear-gradient(180deg,  #C4E538 50%, #333 50%);
+}
+  .bottom-up:after{
+      background: linear-gradient(180deg, transparent 50%,  #C4E538 50%);
+  }
+
+
+.bottom-top,
+.bottom-top:after {
+  background-position-y: 0%;
+}
+
+.bottom-top:hover,
+.bottom-top:hover:after {
+  background-position-y: 100%;
+}
+
+
+
+.swipe-button{
+  border: 2px solid  #C4E538;
+  padding: 12px 30px;
+  display: inline-block;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  .swipe-button:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+.swipe-button,
+.swipe-button:after {
+  background-size: 200% 200%;
+  transition: all 0.5s ease-in-out;
+}
