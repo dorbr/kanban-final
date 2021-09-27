@@ -19,7 +19,7 @@ function createPageStructure(){
     AddSectionButton.addEventListener('click', (event) => {
         let sectionName = prompt('please enter the new section name');
         if(document.querySelectorAll('section').length < 6 ){
-            if(sectionName != null && sectionName.length > 0 && sectionName < 13){
+            if(sectionName != null && sectionName.length > 0 && sectionName.length < 13){
                 createTaskSection({
                     sectionId: sectionName,
                     sectionName: sectionName,
