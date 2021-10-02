@@ -11,7 +11,7 @@ There are 3 default `section` elements.
 
 Each `section` contain:
 
-- [ ] an `input` element.
+-  [ ] an `input` element.
 - [ ] a `button` element.
 - [ ] a `ul` element.
 - [ ] the `ul` element contain li elements.
